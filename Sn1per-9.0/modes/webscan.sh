@@ -91,17 +91,17 @@ if [[ "$MODE" = "webscan" ]]; then
 		echo "[i] Scanning: http://$TARGET/"
     	sudo python3 /usr/share/sniper/bin/zap-scan.py "http://$TARGET/" 
     	DATE=$(date +"%Y%m%d%H%M")
-    	sudo grep "'" /usr/share/sniper/bin/zap-report.txt | cut -d\' -f2 | cut -d\\ -f1 > $LOOT_DIR/web/zap-report-$TARGET-http-$DATE.html
-    	cp -f $LOOT_DIR/web/zap-report-$TARGET-http-$DATE.html $LOOT_DIR/web/zap-report-$TARGET-http.html 2> /dev/null
+    	sudo grep "'" /usr/share/sniper/bin/zap-report.txt | cut -d\' -f2 | cut -d\\ -f1 > $LOOT_DIR/web/zap-report-$TARGET-http-$DATE.json
+    	cp -f $LOOT_DIR/web/zap-report-$TARGET-http-$DATE.json $LOOT_DIR/web/zap-report-$TARGET-http.json 2> /dev/null
     	echo "[i] Scan complete."
-    	echo "[+] Report saved to: $LOOT_DIR/web/zap-report-$TARGET-http-$DATE.html"
+    	echo "[+] Report saved to: $LOOT_DIR/web/zap-report-$TARGET-http-$DATE.json"
     	sleep 5
     	echo "[i] Scanning: https://$TARGET/"
     	sudo python3 /usr/share/sniper/bin/zap-scan.py "https://$TARGET/"
-    	sudo grep "'" /usr/share/sniper/bin/zap-report.txt | cut -d\' -f2 | cut -d\\ -f1 > $LOOT_DIR/web/zap-report-$TARGET-https-$DATE.html
-    	cp -f $LOOT_DIR/web/zap-report-$TARGET-https-$DATE.html $LOOT_DIR/web/zap-report-$TARGET-https.html 2> /dev/null
+    	sudo grep "'" /usr/share/sniper/bin/zap-report.txt | cut -d\' -f2 | cut -d\\ -f1 > $LOOT_DIR/web/zap-report-$TARGET-https-$DATE.json
+    	cp -f $LOOT_DIR/web/zap-report-$TARGET-https-$DATE.json $LOOT_DIR/web/zap-report-$TARGET-https.json 2> /dev/null
     	echo "[i] Scan complete."
-    	echo "[+] Report saved to: $LOOT_DIR/web/zap-report-$TARGET-https-$DATE.html"
+    	echo "[+] Report saved to: $LOOT_DIR/web/zap-report-$TARGET-https-$DATE.json"
     fi
 	if [[ "$ARACHNI_SCAN" == "1" ]]; then
 		echo -e "${OKGREEN}====================================================================================${RESET}•x${OKGREEN}[`date +"%Y-%m-%d](%H:%M)"`${RESET}x•"

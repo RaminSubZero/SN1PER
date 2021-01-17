@@ -32,13 +32,13 @@ targetURL = str(sys.argv[1])
 apiKey=''
 
 # MANDATORY. Define the listening address of ZAP instance
-localProxy = {"http": "http://127.0.0.1:8081", "https": "http://127.0.0.1:8081"}
+localProxy = {"http": "http://172.17.0.100:8081", "https": "http://172.17.0.100:8081"}
 
 # MANDATORY. True to create another ZAP session (overwrite the former if the
 # same name already exists), False to use an existing one
 isNewSession = True
 # MANDATORY. ZAP Session name
-sessionName = 'WebgoatSession'
+sessionName = 'sn1per_session'
 
 # Define the list of global exclude URL regular expressions. List can be empty.
 # The expressions must follow the java.util.regex.Pattern class syntax
@@ -192,19 +192,19 @@ ascanIds = [40018, 40019, 40020, 40021, 40022, 40024, 90018,
 # Currently, possible values are:
 # Low, Medium and High for alert Threshold
 # Low, Medium, High and Insane for attack strength
-alertThreshold = 'Medium'
-attackStrength = 'Low'
+alertThreshold = 'Low'
+attackStrength = 'Insane'
 
 # MANDATORY. Set True to use Ajax Spider, False otherwise.
 useAjaxSpider = True
 
 # MANDATORY. Set True to shutdown ZAP once finished, False otherwise
-shutdownOnceFinished = False
+shutdownOnceFinished = True
 
 #################################
 ### END OF CONFIGURATION AREA ###
 #################################
-sys.stdout = open("/usr/share/sniper/bin/zap-report.txt", "w")
+sys.stdout = open("/usr/share/sniper/bin/zap-report.json", "w")
 
 # Connect ZAP API client to the listening address of ZAP instance
 zap = ZAPv2(proxies=localProxy, apikey=apiKey)
@@ -496,12 +496,12 @@ time.sleep(5)
 # If you want to retrieve alerts:
 ## pprint(zap.core.alerts(baseurl=target, start=None, count=None))
 
-print('HTML report:')
-pprint(core.htmlreport())
+print('JSON report:')
+pprint(core.jsonreport())
 
 # To retrieve ZAP report in XML or HTML format
-print('XML report')
-pprint(core.xmlreport())
+# print('XML report')
+# pprint(core.xmlreport())
 
 if shutdownOnceFinished:
     # Shutdown ZAP once finished
