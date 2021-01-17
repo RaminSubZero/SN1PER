@@ -159,8 +159,8 @@ wpif [[ "$MODE" = "web" ]]; then
     echo -e "${OKGREEN}====================================================================================${RESET}•x${OKGREEN}[`date +"%Y-%m-%d](%H:%M)"`${RESET}x•"
     echo -e "$OKRED RUNNING WEB VULNERABILITY SCAN $RESET"
     echo -e "${OKGREEN}====================================================================================${RESET}•x${OKGREEN}[`date +"%Y-%m-%d](%H:%M)"`${RESET}x•"
-    nikto -h http://$TARGET -output $LOOT_DIR/web/nikto-$TARGET-http-port80.txt
-    sed -ir "s/</\&lh\;/g" $LOOT_DIR/web/nikto-$TARGET-http-port80.txt
+    nikto -h http://$TARGET -Tuning 9 -output $LOOT_DIR/web/nikto-$TARGET-http-port80.xml
+    sed -ir "s/</\&lh\;/g" $LOOT_DIR/web/nikto-$TARGET-http-port80.xml
   fi
   if [[ "$SHOCKER" = "1" ]]; then
       echo -e "${OKGREEN}====================================================================================${RESET}•x${OKGREEN}[`date +"%Y-%m-%d](%H:%M)"`${RESET}x•"

@@ -311,8 +311,8 @@ if [[ "$MODE" = "webporthttp" ]]; then
       echo -e "${OKGREEN}====================================================================================${RESET}•x${OKGREEN}[`date +"%Y-%m-%d](%H:%M)"`${RESET}x•"
       echo -e "$OKRED RUNNING WEB VULNERABILITY SCAN $RESET"
       echo -e "${OKGREEN}====================================================================================${RESET}•x${OKGREEN}[`date +"%Y-%m-%d](%H:%M)"`${RESET}x•"
-      nikto -h http://$TARGET:${PORT} -output $LOOT_DIR/web/nikto-$TARGET-http-port${PORT}.txt
-      sed -ir "s/</\&lh\;/g" $LOOT_DIR/web/nikto-$TARGET-http-port${PORT}.txt
+      nikto -h http://$TARGET:${PORT} -Tuning 9 -output $LOOT_DIR/web/nikto-$TARGET-http-port${PORT}.xml
+      sed -ir "s/</\&lh\;/g" $LOOT_DIR/web/nikto-$TARGET-http-port${PORT}.xml
     fi
     cd $INSTALL_DIR
     if [[ "$CLUSTERD" == "1" ]]; then

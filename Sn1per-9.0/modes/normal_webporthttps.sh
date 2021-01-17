@@ -156,8 +156,8 @@ if [[ "$MODE" = "web" ]]; then
     echo -e "${OKGREEN}====================================================================================${RESET}•x${OKGREEN}[`date +"%Y-%m-%d](%H:%M)"`${RESET}x•"
     echo -e "$OKRED RUNNING WEB VULNERABILITY SCAN $RESET"
     echo -e "${OKGREEN}====================================================================================${RESET}•x${OKGREEN}[`date +"%Y-%m-%d](%H:%M)"`${RESET}x•"
-    nikto -h https://$TARGET -output $LOOT_DIR/web/nikto-$TARGET-http-port443.txt
-    sed -ir "s/</\&lh\;/g" $LOOT_DIR/web/nikto-$TARGET-http-port443.txt
+    nikto -h https://$TARGET -Tuning 9 -output $LOOT_DIR/web/nikto-$TARGET-http-port443.xml
+    sed -ir "s/</\&lh\;/g" $LOOT_DIR/web/nikto-$TARGET-http-port443.xml
   fi
   if [[ "$SHOCKER" = "1" ]]; then
       echo -e "${OKGREEN}====================================================================================${RESET}•x${OKGREEN}[`date +"%Y-%m-%d](%H:%M)"`${RESET}x•"
