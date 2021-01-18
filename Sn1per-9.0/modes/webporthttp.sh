@@ -386,10 +386,8 @@ if [[ "$MODE" = "webporthttp" ]]; then
     echo -e "$OKRED RUNNING OWASP ZAP SCAN $RESET"
   echo -e "${OKGREEN}====================================================================================${RESET}•x${OKGREEN}[`date +"%Y-%m-%d](%H:%M)"`${RESET}x•"
   echo "[i] Scanning: http://$TARGET:$PORT/"
-    sudo python3 /usr/share/sniper/bin/zap-scan.py "http://$TARGET:$PORT/" 
     DATE=$(date +"%Y%m%d%H%M")
-    sudo grep "'" /usr/share/sniper/bin/zap-report.txt | cut -d\' -f2 | cut -d\\ -f1 > $LOOT_DIR/web/zap-report-$TARGET-http-$DATE.html
-    cp -f $LOOT_DIR/web/zap-report-$TARGET-http-$DATE.html $LOOT_DIR/web/zap-report-$TARGET-http.html 2> /dev/null
+    sudo python3 /usr/share/sniper/bin/zap-scan.py "http://$TARGET:$PORT/" $LOOT_DIR/web/zap-report-$TARGET-http.json
     echo "[i] Scan complete."
     echo "[+] Report saved to: $LOOT_DIR/web/zap-report-$TARGET-http-$DATE.html"
   fi
