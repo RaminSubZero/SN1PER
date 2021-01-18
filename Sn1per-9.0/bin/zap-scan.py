@@ -14,7 +14,7 @@ change variables according to your needs, and the part with API calls.
 
 Author : aine-rb on Github, from Sopra Steria - modified for Sn1per by @xer0dayz
 '''
-
+import random
 import time
 from pprint import pprint
 from zapv2 import ZAPv2
@@ -38,7 +38,7 @@ localProxy = {"http": "http://172.17.0.100:8081", "https": "http://172.17.0.100:
 # same name already exists), False to use an existing one
 isNewSession = True
 # MANDATORY. ZAP Session name
-sessionName = 'sn1per_session'
+sessionName = str(random.getrandbits(128))
 
 # Define the list of global exclude URL regular expressions. List can be empty.
 # The expressions must follow the java.util.regex.Pattern class syntax
@@ -196,7 +196,7 @@ alertThreshold = 'Low'
 attackStrength = 'Insane'
 
 # MANDATORY. Set True to use Ajax Spider, False otherwise.
-useAjaxSpider = True
+useAjaxSpider = False
 
 # MANDATORY. Set True to shutdown ZAP once finished, False otherwise
 shutdownOnceFinished = True
@@ -204,7 +204,7 @@ shutdownOnceFinished = True
 #################################
 ### END OF CONFIGURATION AREA ###
 #################################
-sys.stdout = open("/usr/share/sniper/bin/zap-report.json", "w")
+sys.stdout = open("/usr/share/sniper/bin/zap-report.txt", "w")
 
 # Connect ZAP API client to the listening address of ZAP instance
 zap = ZAPv2(proxies=localProxy, apikey=apiKey)
@@ -496,8 +496,9 @@ time.sleep(5)
 # If you want to retrieve alerts:
 ## pprint(zap.core.alerts(baseurl=target, start=None, count=None))
 
-print('JSON report:')
-pprint(core.jsonreport())
+# Extract JSON report
+with open('/usr/share/sniper/bin/zap-report.json', 'w') as outfile:
+    outfile.write(core.jsonreport() + '\n')
 
 # To retrieve ZAP report in XML or HTML format
 # print('XML report')
