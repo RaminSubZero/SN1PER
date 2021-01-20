@@ -14,6 +14,7 @@ change variables according to your needs, and the part with API calls.
 
 Author : aine-rb on Github, from Sopra Steria - modified for Sn1per by @xer0dayz
 '''
+import json
 import random
 import time
 from pprint import pprint
@@ -496,10 +497,11 @@ time.sleep(5)
 
 # If you want to retrieve alerts:
 ## pprint(zap.core.alerts(baseurl=target, start=None, count=None))
+alerts = zap.alert.alerts()
 
 # Extract JSON report
 with open(reportPath, 'w') as outfile:
-    outfile.write(core.jsonreport() + '\n')
+    json.dump(alerts, outfile)
 
 # To retrieve ZAP report in XML or HTML format
 # print('XML report')
