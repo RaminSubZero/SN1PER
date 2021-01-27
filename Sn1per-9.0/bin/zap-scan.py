@@ -497,11 +497,11 @@ time.sleep(5)
 
 # If you want to retrieve alerts:
 ## pprint(zap.core.alerts(baseurl=target, start=None, count=None))
-alerts = zap.alert.alerts()
+json_report_str = zap.core.jsonreport()
 
 # Extract JSON report
 with open(reportPath, 'w') as outfile:
-    json.dump(alerts, outfile)
+    outfile.write(json_report_str + '\n')
 
 # To retrieve ZAP report in XML or HTML format
 # print('XML report')
