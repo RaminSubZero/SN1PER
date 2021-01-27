@@ -8,11 +8,13 @@ RUN set -x \
         && apt-get -yqq update \
         && apt-get -yqq dist-upgrade \
         && apt-get clean
-RUN apt-get install -y metasploit-framework
+RUN apt-get install -yqq metasploit-framework
 
-RUN apt-get install sqlmap
+RUN apt-get install -yqq sqlmap
 
-RUN sudo pip3 install python-owasp-zap-v2.4 && pip3 install python-owasp-zap-v2.4 && pip install python-owasp-zap-v2.4 && sudo pip install python-owasp-zap-v2.4
+RUN apt-get install -yqq python3-pip
+
+RUN sudo pip3 install python-owasp-zap-v2.4 && pip3 install python-owasp-zap-v2.4
 
 RUN sed -i 's/systemctl status ${PG_SERVICE}/service ${PG_SERVICE} status/g' /usr/bin/msfdb && \
     service postgresql start && \
