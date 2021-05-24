@@ -1,6 +1,4 @@
 #!/bin/bash
-# Install script for sn1per
-# Created by @xer0dayz - https://xerosecurity.com
 
 OKBLUE='\033[94m'
 OKRED='\033[91m'
@@ -15,8 +13,8 @@ echo -e "$OKRED  (__  ) / / // // /_/ /  __/ /    $RESET"
 echo -e "$OKRED /____/_/ /_/___/ .___/\___/_/     $RESET"
 echo -e "$OKRED               /_/                 $RESET"
 echo -e "$RESET"
-echo -e "$OKORANGE + -- --=[ https://xerosecurity.com $RESET"
-echo -e "$OKORANGE + -- --=[ Sn1per by @xer0dayz $RESET"
+echo -e "$OKORANGE + -- --=[ https://ertebatat-vira.ir $RESET"
+echo -e "$OKORANGE + -- --=[ Sn1per by @svuebnzoemro $RESET"
 echo ""
 
 INSTALL_DIR=/usr/share/sniper

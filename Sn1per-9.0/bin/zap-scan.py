@@ -34,7 +34,7 @@ reportPath = str(sys.argv[2])
 apiKey = ''
 
 # MANDATORY. Define the listening address of ZAP instance
-localProxy = {"http": "http://172.17.0.100:8081", "https": "http://172.17.0.100:8081"}
+localProxy = {"http": "http://localhost:8080", "https": "http://localhost:8080"}
 
 # MANDATORY. True to create another ZAP session (overwrite the former if the
 # same name already exists), False to use an existing one
@@ -45,7 +45,7 @@ sessionName = str(random.getrandbits(128))
 # Define the list of global exclude URL regular expressions. List can be empty.
 # The expressions must follow the java.util.regex.Pattern class syntax
 # The following example excludes every single URL except http://localhost:8081
-globalExcludeUrl = ['^(?:(?!http:\/\/localhost:8081).*).$']
+globalExcludeUrl = ['^(?:(?!http:\/\/localhost:8080).*).$']
 
 # MANDATORY. Define if an outgoing proxy server is used
 useProxyChain = False

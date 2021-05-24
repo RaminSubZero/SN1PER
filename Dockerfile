@@ -8,7 +8,7 @@ RUN set -x \
         && apt-get -yqq update \
         && apt-get -yqq dist-upgrade \
         && apt-get clean
-RUN apt-get install -yqq metasploit-framework openssh-server
+RUN apt-get install -yqq metasploit-framework
 
 RUN apt-get install -yqq python3-pip
 
@@ -28,6 +28,4 @@ COPY . .
 RUN cd Sn1per-9.0 \
     && ./install.sh
 
-EXPOSE 22
-CMD ["/usr/sbin/sshd","-D"]
-
+ENTRYPOINT [ "/usr/bin/sniper" ]
