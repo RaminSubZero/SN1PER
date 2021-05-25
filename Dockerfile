@@ -14,13 +14,8 @@ RUN apt-get install -yqq python3-pip
 
 RUN sudo pip3 install python-owasp-zap-v2.4 && pip3 install python-owasp-zap-v2.4
 
-RUN useradd -rm -d /usr/share/sn1per -s /bin/bash -g root -G sudo -u 1000 sn1per
-
-RUN  echo 'sn1per:12345' | chpasswd
-
 RUN sed -i 's/systemctl status ${PG_SERVICE}/service ${PG_SERVICE} status/g' /usr/bin/msfdb && \
     service postgresql start && \
-    service ssh start && \
     msfdb reinit
 
 COPY . .
